@@ -8,6 +8,8 @@ pg_dump --host localhost --port 5432 --username postgres --format tar --file /ho
 
 Restore:
 pg_restore -i -h localhost -p 5432 -U postgres -d GI2S_APP -v /home/GI2S_APP_20170420.backup
+Ou:
+psql -U postgres -f GI2S_APP_20170703.sql GI2S_APP
 
 Copiar do servidor para a pasta local
 scp root@172.24.177.3:/home/GI2S_APP_20170420.backup .
