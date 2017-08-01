@@ -91,6 +91,9 @@ chown -R user_novo:user_novo /home/user_novo/novo_dir?teste.txt
 Ler saida de console
 tail -f output.log
 
+* Copiar tabelas
+pg_dump  -U postgres -F custom -v -f backup_tabela_licitacao.backup -t 'ctrlint_tcm_licitacoes' -d GI2S_OPE_230440
+
 
 
 
