@@ -14,6 +14,9 @@ psql -U postgres -f GI2S_APP_20170703.sql GI2S_APP
 Copiar do servidor para a pasta local
 scp root@172.24.177.3:/home/GI2S_APP_20170420.backup .
 
+Copia os dados de uma tabela para outro banco
+pg_dump -h localhost -U postgres -t schema_version GI2S_APP | psql -U postgres -h 192.168.2.199 GI2S_APP
+
 Fazer Tunelamento:
 ssh -f user@ip -L [porta_maquina_local]:localhost:[porta_maquina_servidor] -N
 Ex: ssh -f root@www.gissa.com.br -L 28087:localhost:18087 -N
