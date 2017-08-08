@@ -17,6 +17,13 @@ scp root@172.24.177.3:/home/GI2S_APP_20170420.backup .
 Copia os dados de uma tabela para outro banco
 pg_dump -h localhost -U postgres -t schema_version GI2S_APP | psql -U postgres -h 192.168.2.199 GI2S_APP
 
+Matar as sessoes do usuarios no postgres
+SELECT pg_terminate_backend(pid) FROM pg_stat_activity 
+WHERE -- don't kill my own connection!
+    pid <> pg_backend_pid()
+    -- don't kill the connections to other databases
+    AND datname = 'GI2S_APP';
+
 Fazer Tunelamento:
 ssh -f user@ip -L [porta_maquina_local]:localhost:[porta_maquina_servidor] -N
 Ex: ssh -f root@www.gissa.com.br -L 28087:localhost:18087 -N
