@@ -104,6 +104,12 @@ tail -f output.log
 * Copiar tabelas
 pg_dump  -U postgres -F custom -v -f backup_tabela_licitacao.backup -t 'ctrlint_tcm_licitacoes' -d GI2S_OPE_230440
 
+* Criar Banco de dados
+createdb --host localhost --port 5432 --username postgres GI2S_STG_231290
+* Delete Banco de Dados
+dropdb --host localhost --port 5432 --username postgres GI2S_DIM_230440
+
+
 
 
 
