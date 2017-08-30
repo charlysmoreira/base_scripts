@@ -2,6 +2,18 @@
 # base_scripts
 ```
 
+## Instalação do Java x.x.x.x
+
+# Instalação do sdkman
+curl -s "https://get.sdkman.io" | bash
+# Vericar versao
+java -version
+# Listar os jdks
+sdk list java
+# Instalçao da versao desejada
+sdk install java 7u141-zulu
+
+
 Scripts shell e sql
 Dump_Banco:
 pg_dump --host localhost --port 5432 --username postgres --format tar --file /home/GI2S_APP_20170420.backup GI2S_APP
