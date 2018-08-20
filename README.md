@@ -124,6 +124,9 @@ dropdb --host localhost --port 5432 --username postgres GI2S_DIM_230440
 http://www.springboottutorial.com/creating-rest-service-with-spring-boot
 
 
+ssh root@www.gissa.com.br -L 28087:localhost:18087 -L 5433:gissadb:5432
+
+
 
 
 
