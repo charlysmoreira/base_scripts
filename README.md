@@ -127,6 +127,91 @@ http://www.springboottutorial.com/creating-rest-service-with-spring-boot
 ssh root@www.gissa.com.br -L 28087:localhost:18087 -L 5433:gissadb:5432
 
 
+===============================
+
+* Crie um usuário gissa
+
+* Crie uma pasta .gissa
+
+* Crie uma pasta robo e work dentro de .gissa
+
+* Copie o robo-etl.jar para a pasta robo
+
+* Copie o arquivo application.yml para a pasta robo. Exemplo do conteúdo:
+
+```
+xmpp:
+  username: nome_do_robo_no_xmpp
+  password: senha_do_robo_no_xmpp
+  host: xmpp.gissa.com.br
+  port: 443
+  serviceName: xmpp.gissa.com.br
+  useHttps: true
+  filePath: /websocket/
+  resource: gissa
+  rooms: gissa
+
+```
+
+* Copie o arquivo robo.env para a pasta robo com o conteúdo abaixo:
+
+```
+JAVA_OPTS="-Xms1024m -Xmx2048m -XX:+UseParallelGC -XX:+AggressiveOpts -XX:+UseFastAccessorMethods"
+```
+
+* Criando serviço
+
+** Entre no diretório /etc/systemd/system ** Crie um arquivo .service Ex: robo.service e adicione o conteúdo abaixo
+
+```
+[Unit]
+Description=Gissa Robo
+
+[Service]
+User=gissa
+Type=oneshot
+ExecStart=/home/gissa/.gissa/robo/robo-etl.jar start
+ExecStop=/home/gissa/.gissa/robo/robo-etl.jar stop
+RemainAfterExit=yes
+EnvironmentFile=/home/gissa/.gissa/robo/robo.env
+
+[Install]
+WantedBy=multi-user.target
+After=network-online.target
+
+```
+
+** Entre no diretório /etc/systemd/system ** Crie um arquivo .service Ex: robo.service e adicione o conteúdo abaixo
+
+```
+[Unit]
+Description=Gissa Robo
+
+[Service]
+User=gissa
+ExecStart=/home/gissa/.gissa/robo/robo-etl.jar
+EnvironmentFile=/home/gissa/.gissa/robo/robo.env
+SuccessExitStatus=143
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+After=network-online.target
+
+```
+
+* Alguns comandos para trabalhar com o serviço
+
+```
+systemctl disable robo.service
+systemctl daemon-reload
+systemctl enable robo.service
+systemctl start robo.service
+systemctl stop robo.service
+systemctl status robo.service
+```
+
+
 
 
 
