@@ -129,17 +129,17 @@ ssh root@www.gissa.com.br -L 28087:localhost:18087 -L 5433:gissadb:5432
 
 ===============================
 
-* Crie um usuário gissa
+ Crie um usuário gissa
 
-* Crie uma pasta .gissa
+ Crie uma pasta .gissa
 
-* Crie uma pasta robo e work dentro de .gissa
+ Crie uma pasta robo e work dentro de .gissa
 
-* Copie o robo-etl.jar para a pasta robo
+ Copie o robo-etl.jar para a pasta robo
 
-* Copie o arquivo application.yml para a pasta robo. Exemplo do conteúdo:
+ Copie o arquivo application.yml para a pasta robo. Exemplo do conteúdo:
 
-```
+
 xmpp:
   username: nome_do_robo_no_xmpp
   password: senha_do_robo_no_xmpp
@@ -151,19 +151,19 @@ xmpp:
   resource: gissa
   rooms: gissa
 
-```
 
-* Copie o arquivo robo.env para a pasta robo com o conteúdo abaixo:
 
-```
+Copie o arquivo robo.env para a pasta robo com o conteúdo abaixo:
+
+
 JAVA_OPTS="-Xms1024m -Xmx2048m -XX:+UseParallelGC -XX:+AggressiveOpts -XX:+UseFastAccessorMethods"
-```
 
-* Criando serviço
 
-** Entre no diretório /etc/systemd/system ** Crie um arquivo .service Ex: robo.service e adicione o conteúdo abaixo
+ Criando serviço
 
-```
+ Entre no diretório /etc/systemd/system ** Crie um arquivo .service Ex: robo.service e adicione o conteúdo abaixo
+
+
 [Unit]
 Description=Gissa Robo
 
@@ -179,11 +179,11 @@ EnvironmentFile=/home/gissa/.gissa/robo/robo.env
 WantedBy=multi-user.target
 After=network-online.target
 
-```
 
-** Entre no diretório /etc/systemd/system ** Crie um arquivo .service Ex: robo.service e adicione o conteúdo abaixo
 
-```
+Entre no diretório /etc/systemd/system ** Crie um arquivo .service Ex: robo.service e adicione o conteúdo abaixo
+
+
 [Unit]
 Description=Gissa Robo
 
@@ -198,18 +198,18 @@ Restart=always
 WantedBy=multi-user.target
 After=network-online.target
 
-```
 
-* Alguns comandos para trabalhar com o serviço
 
-```
+Alguns comandos para trabalhar com o serviço
+
+
 systemctl disable robo.service
 systemctl daemon-reload
 systemctl enable robo.service
 systemctl start robo.service
 systemctl stop robo.service
 systemctl status robo.service
-```
+
 
 
 
