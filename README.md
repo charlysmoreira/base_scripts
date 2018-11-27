@@ -110,6 +110,10 @@ service apache2 restart
 Permissao para usuario
 chown -R user_novo:user_novo /home/user_novo/novo_dir?teste.txt
 
+Atualizar uma coluna
+update person as p set email = concat(pe.email, '1')
+from person as pe where p.email = pe.email;
+
 Ler saida de console
 tail -f output.log
 
@@ -209,7 +213,6 @@ systemctl enable robo.service
 systemctl start robo.service
 systemctl stop robo.service
 systemctl status robo.service
-
 
 
 
